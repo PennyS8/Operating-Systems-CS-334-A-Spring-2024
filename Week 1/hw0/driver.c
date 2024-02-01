@@ -3,18 +3,11 @@
 #include "resize.h"
 
 void printPoints(struct point** polyLine, int size){
-    for(int i = size-1; i >= 0; i--){
+    for(int i = 0; i < size; i++){
         printf("Orig Pts: x:%d, y:%d, c:%d\n",
                 polyLine[i]->x_cor, polyLine[i]->y_cor, polyLine[i]->color);
     }
 }
-
-// void printNewPoints(struct point** polyLine, int size){
-//     for(int i = size; i > 0; i--){
-//         printf("New Pts: x:%d, y:%d, c:%d\n",
-//                 polyLine[i]->x_cor, polyLine[i]->y_cor, polyLine[i]->color);
-//     }
-// }
 
 void deallocPolyline(struct point** polyLine, int size) {
     printf("size: %d\n", size);
@@ -42,11 +35,10 @@ int main(int argc, char* argv[]){
 
     printf("%d\n", size);
     // Initialize each array slot with a new instance of a dynamically allocated point struct
-    for(int i = size-1; i >= 0; i--){
+    for(int i = 0; i < size; i++){
         polyLine[i] = (struct point*)malloc(sizeof(struct point));
-        polyLine[i]->x_cor = size - (i+1);
-        printf("polyLine[%d]->x_cor = %d\n i+1=[%d]\n", i, polyLine[i]->x_cor, i+1);
-        polyLine[i]->y_cor = i+1;
+        polyLine[i]->x_cor = size - (size-i);
+        polyLine[i]->y_cor = size-i;
         polyLine[i]->color = 0;
     }
     printf("done with allocaitons\n");
