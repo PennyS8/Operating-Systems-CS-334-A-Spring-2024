@@ -26,20 +26,14 @@ int main(const int argc, const char * argv []) {
         return 1;
     }
 
-    char password[MAX_PASSWORD_LENGTH];
     char line[MAX_LINE_LENGTH];
     int found = 0;
 
     // Read each line from the file
     while(fgets(line, sizeof(line), file) != NULL){
-        // Parse the line into username and password
-        if(fscanf(line, "%s", password) != 1){
-            printf("Error: Malformed line in file\n");
-            continue;
-        }
         // Compare the hashed password with the one provided
-        if (strcmp(password, hashed_password) == 0) {
-            printf("Match found for password: %s\n", password);
+        if (strcmp(line, hashed_password) == 0) {
+            printf("Match found for password.\n");
             found = 1;
             break;
         }
@@ -48,7 +42,7 @@ int main(const int argc, const char * argv []) {
     fclose(file);
 
     if(!found){
-        printf("No match fonud for the provided hashed password.\n");
+        printf("No match found for the provided hashed password.\n");
     }
 
     return 0;
