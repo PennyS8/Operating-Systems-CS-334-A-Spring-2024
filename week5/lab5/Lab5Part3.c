@@ -11,6 +11,8 @@
 #include <errno.h>
 */
 
+// TODO: DO NOT DO THIS PART THIS CODE IS -S-H-I-T-T-Y- BAD
+
 #define Left(p)	(p)
 #define Right(p) (((p)+1) % N)
 
